@@ -1,0 +1,267 @@
+body{
+	background: #E3E5E5;
+}
+
+#main{
+	width: 100%;
+	height: 600vh;
+	transition: all 1s;
+	position: relative;
+	overflow: hidden;
+}
+
+#main>#g{
+	width: 100%;
+	height: 600vh;
+}
+
+
+#main #header{
+	width: 100%;
+	height: 48px;
+	background: #fff;
+}
+
+#main #header>p{
+	display: inline-block;
+	margin: 0;
+	margin-top: 15px;
+	color: #21A97E;
+	font-size: 18px;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding-left: 200px;
+}
+
+#main #nav{
+	z-index:5;
+	width: 30px;
+	height: 150px;
+	position: fixed;
+	top: 45%;
+	right: 10px;
+}
+
+#main #nav>.bubbles{
+	width: 12px;
+	height: 12px;
+	border-radius: 9px;
+	background: #21A97E;
+	margin-top: 10px;
+	position: relative;
+}
+
+#main #nav>.bubbles>.hiddenText{
+	position: absolute;
+	right: 30px;
+	display: inline-block;
+	margin: 0;
+	color: #fff;
+	background: #21A97E;
+	padding: 2px;
+	display: none;
+}
+
+#main #nav>.bubbles:hover>.hiddenText{
+	display: block;
+}
+
+#main #nav>.bubbles>.hiddenText::after{
+	content: ''; 
+    position: absolute;
+    border: 5px solid transparent;
+    border-left: 20px solid #21A97E;
+}
+
+#main #nav>.bubbles:first-child>.hiddenText::after{
+	left: 139px; bottom: 10px;
+}
+
+#main #nav>.bubbles:nth-child(2)>.hiddenText::after{
+	left: 173px; bottom: 10px;
+}
+
+#main #nav>.bubbles:nth-child(3)>.hiddenText::after{
+	left: 43px; bottom: 10px;
+}
+
+#main #nav>.bubbles:first-child>.hiddenText{
+	width: 138px;
+}
+
+#main #nav>.bubbles:nth-child(2)>.hiddenText{
+	width: 172px;
+}
+
+#main #nav>.bubbles:nth-child(3)>.hiddenText{
+	width: 42px;
+}
+
+#main #text{
+	position: absolute;
+	z-index:4;
+	height: 600vh;
+	width: 100%;
+}
+
+#main #text>.articles{
+	position: absolute;
+	left: 200px;
+	width: 300px;
+}
+
+#main #text>.articles:first-child{
+	top: 110px;
+	height: 470px;
+}
+
+#main #text>.articles:nth-child(2){
+	top: 1200px;
+	height: 465px;
+}
+
+#main #text>.articles:nth-child(3){
+	top: 2500px;
+	height: 180px;
+}
+
+#main #text>.articles>h1{
+	font-size: 50px;
+	color: #21A97E;
+	margin: 0;
+}
+
+#main #text>.articles>p{
+	line-height: 1.7;
+	font-size: 15px;
+}
+
+#main #text>.articles>div>div{
+	height: 1px;
+	border: none;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+#main #text>.articles>div>i{
+	color: #21A97E;
+	font-size: 30px;
+	cursor: pointer;
+	margin-left: 130px;
+}
+
+#main #layout_1{
+	z-index: 3;
+	position: absolute;
+	height: 600vh;
+	width: 100%;
+}
+
+#main #layout_1>.mainImg{
+	position: absolute;
+	background-size: cover;
+}
+
+#main #layout_1>.mainImg:first-child{
+	background: url('../img/balloon.png') no-repeat;
+	top: -150px;
+	right: 220px;
+	width: 550px;
+	height: 800px;
+}
+
+#main #layout_1>.mainImg:nth-child(2){
+	background: url('../img/balloon2.png') no-repeat;
+	top: 800px;
+	right: 220px;
+	width: 600px;
+	height: 900px;
+}
+
+#main #layout_1>.mainImg:nth-child(3){
+	background: url('../img/ground.png') no-repeat;
+	top: 2000px;
+	right: 100px;
+	width: 1100px;
+	height: 700px;
+}
+
+#main #layout_2{
+	z-index: 2;
+	position: absolute;
+	height: 600vh;
+	width: 100%;
+}
+
+#main #layout_2>.firstBackScreen{
+	position: absolute;
+	background: url('../img/cloud-lg1.png') no-repeat;
+	background-size: cover;
+	width: 605px;
+	height: 170px;
+}
+
+#main #layout_2>.firstBackScreen:first-child{
+	top: 180px;
+	right: 1000px;
+}
+
+#main #layout_2>.firstBackScreen:nth-child(2){
+	top: 400px;
+	right: 300px;
+}
+
+#main #layout_2>.firstBackScreen:nth-child(3){
+	top: 670px;
+	right: 100px;
+}
+
+#main #layout_2>.firstBackScreen:nth-child(4){
+	top: 910px;
+	right: 950px;
+}
+
+#main #layout_2>.firstBackScreen:nth-child(5){
+	top: 1180px;
+	right: 200px;
+}
+
+#main #layout_3{
+	z-index: 1;
+	position: absolute;
+	height: 600vh;
+	width: 100%;
+}
+
+#main #layout_3>.secondBackScreen{
+	position: absolute;
+	background: url('../img/cloud-lg2.png') no-repeat;
+	background-size: cover;
+	width: 325px;
+	height: 110px;
+}
+
+#main #layout_3>.secondBackScreen:first-child{
+	top: 100px;
+	right: 100px;
+}
+
+#main #layout_3>.secondBackScreen:nth-child(2){
+	top: 340px;
+	right: 650px;
+}
+
+#main #layout_3>.secondBackScreen:nth-child(3){
+	top: 540px;
+	right: -90px;
+}
+
+#main #layout_3>.secondBackScreen:nth-child(4){
+	top: 610px;
+	right: 1000px;
+}
+
+#main #layout_3>.secondBackScreen:nth-child(5){
+	top: 730px;
+	right: 550px;
+}

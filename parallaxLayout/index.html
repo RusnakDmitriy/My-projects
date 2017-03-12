@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8' />
+		<title>ParallaxLayout</title>
+		<link rel='stylesheet' href='css/main.css' />
+		<link rel='stylesheet' href='css/reset.css' />
+		<link rel='stylesheet' href='css/fontello.css' />
+	</head>
+	<body>
+		<section id='main'>
+		<div id='g'>
+			<div id='header'>
+				<p>The history of aeronautics</p>
+			</div>
+			<div id='nav'>
+				<div class='bubbles'>
+					<p class='hiddenText'>First manned flights</p>
+				</div>
+				<div class='bubbles'>
+					<p class='hiddenText'>The frameless parachute</p>
+				</div>
+				<div class='bubbles'>
+					<p class='hiddenText'>About</p>
+				</div>
+			</div>
+			<div id='text'>
+				<div class='articles'>
+					<h1>First manned flights</h1>
+					<p>The first clearly recorded instance of a balloon carrying passengers used hot air to generate buoyancy and was built by the brothers Joseph-Michel and Jacques-Etienne Montgolfier in Annonay, France. After experimenting with unmanned balloons and flights with animals, the first tethered balloon flight with humans on board took place on October 15, 1783.</p>
+					<div>
+						<div></div>
+						<i class='icon-down-dir'></i>
+					</div>
+				</div>
+				<div class='articles'>
+					<h1>The frameless parachute</h1>
+					<p>André-Jacques Garnerin carried out the first jump with a silk parachute on October 22, 1797 at Parc Monceau, Paris. Garnerin's first parachute resembled a closed umbrella before he ascended; at a height of approximately 3,000 feet he severed the rope that connected his parachute to the balloon, and the basket fell to earth. Garnerin emerged uninjured.</p>
+					<div>
+						<i class='icon-up-dir'></i>
+						<div></div>
+						<i class='icon-down-dir'></i>
+					</div>
+				</div>
+				<div class='articles'>
+					<h1>About</h1>
+					<p>This is a jQuery parallax scrolling experiment by Jonathan Nicol. Read about it on my blog.</p>
+					<div>
+						<i class='icon-up-dir'></i>
+						<div></div>
+					</div>
+				</div>
+			</div>
+			<div id='layout_1'>
+				<div class='mainImg'></div>
+				<div class='mainImg'></div>
+				<div class='mainImg'></div>
+			</div>
+			<div id='layout_2'>
+				<div class='firstBackScreen'></div>
+				<div class='firstBackScreen'></div>
+				<div class='firstBackScreen'></div>
+				<div class='firstBackScreen'></div>
+				<div class='firstBackScreen'></div>
+			</div>
+			<div id='layout_3'>
+				<div class='secondBackScreen'></div>
+				<div class='secondBackScreen'></div>
+				<div class='secondBackScreen'></div>
+				<div class='secondBackScreen'></div>
+				<div class='secondBackScreen'></div>
+			</div>
+		</div>
+		</section>
+		<script>
+			var $ = function(element){
+				return document.getElementById(element);
+			},
+			elClass = function(element){
+				return document.getElementsByClassName(element);
+			},
+			WinHeight = window.innerHeight;
+			
+			function getStyle(elem) {
+				return window.getComputedStyle ? getComputedStyle(elem, "") : elem.currentStyle;
+			}
+			
+			function parallaxScroll(){
+				var scroll = this.pageYOffset || document.documentElement.scrollTop;
+				console.log(scroll)
+					$('layout_1').style.top = scroll*.25 + 'px';
+					$('layout_2').style.top = scroll*.5 + 'px';
+					$('layout_3').style.top = scroll*.75 + 'px';
+					
+				if(window.pageYOffset<parseInt(getStyle($('text').children[0]).height)+parseInt(getStyle($('text').children[0]).top))
+					$('nav').children[0].style.backgroundColor = 'rgb(255,255,255)';
+				 else
+					$('nav').children[0].style.backgroundColor = 'rgb(33,169,126)';
+					
+				if(window.pageYOffset>parseInt(getStyle($('text').children[0]).height)+parseInt(getStyle($('text').children[0]).top) && window.pageYOffset<parseInt(getStyle($('text').children[1]).height)+parseInt(getStyle($('text').children[1]).top))
+					$('nav').children[1].style.backgroundColor = 'rgb(255,255,255)';
+				 else
+					$('nav').children[1].style.backgroundColor = 'rgb(33,169,126)';
+					
+				if(window.pageYOffset>parseInt(getStyle($('text').children[1]).height)+parseInt(getStyle($('text').children[1]).top))
+					$('nav').children[2].style.backgroundColor = 'rgb(255,255,255)';
+				 else
+					$('nav').children[2].style.backgroundColor = 'rgb(33,169,126)';
+			}
+			
+			window.addEventListener('scroll',  parallaxScroll);
+			parallaxScroll();	
+			
+			(function(){
+				function animate(options) {
+					var start = performance.now();
+					requestAnimationFrame(function animate(time) {
+						var timeFraction = (time - start) / options.duration;
+						if (timeFraction > 1) timeFraction = 1;
+						var progress = options.timing(timeFraction)
+						options.draw(progress);
+						if (timeFraction < 1) {
+							requestAnimationFrame(animate);
+						}
+					});
+				}
+				
+				elClass('icon-down-dir')[0].addEventListener('click', function(){
+					animate({
+						duration: 500,
+						timing: function(timeFraction) {
+							return timeFraction;
+						},
+						draw: function(progress) {
+							document.documentElement.scrollTop = position + progress * (1200-position);
+						}
+					});
+					var position = document.documentElement.scrollTop;
+				})
+				
+				elClass('icon-down-dir')[1].addEventListener('click', function(){
+					animate({
+						duration: 500,
+						timing: function(timeFraction) {
+							return timeFraction;
+						},
+						draw: function(progress) {
+							document.documentElement.scrollTop = position + progress * (2400-position);
+						}
+					});
+					var position = document.documentElement.scrollTop;
+				})
+				
+				elClass('icon-up-dir')[0].addEventListener('click', function(){
+					animate({
+						duration: 500,
+						timing: function(timeFraction) {
+							return timeFraction;
+						},
+						draw: function(progress) {
+							document.documentElement.scrollTop = position - progress * (position-100);
+						}
+					});
+					var position = document.documentElement.scrollTop;
+				})
+				
+				elClass('icon-up-dir')[1].addEventListener('click', function(){
+					animate({
+						duration: 500,
+						timing: function(timeFraction) {
+							return timeFraction;
+						},
+						draw: function(progress) {
+							document.documentElement.scrollTop = position - progress * (position - 1200);
+						}
+					});
+					var position = document.documentElement.scrollTop;
+				})
+			})()
+		</script>
+	</body>
+</html>
